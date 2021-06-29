@@ -1,0 +1,167 @@
+
+
+- Pass predict function instead of classifier?
+
+- Implement verification
+    i.e. --> if 0 weight, if it changes, nothing changes
+
+- Fare esperimento con correlazione continua
+-- Esperimento 1
+Artificial attributes 0 to 9, 10 attributi
+
+
+Test1:
+- 
+
+
+- Fornire una discretizzazione
+
+- Aggiungere esperimenti con Anchor  V
+- Qual e' la modifica maggiore? Fornire all'utente la modifica maggiore --> il what if
+
+- Aggiungere Non fare il match sulla classe predetta ma salvare anche la classe associata per vedere l'analisi
+- Applied rule vs applicable rule --> matching but different predicted class
+
+Tests:
+- Run compas
+
+
+
+Notes:
+- Use original data as input?
+- Use predict function to handle prediction -- DONE
+- Input: pandas?
+- Encoding of each attribute if any
+- Encoding del training per calcolare il vicinato
+- Si puo' fare il masking con gli attributi discreti/originali
+- Nel delta: keep fixed all, change i
+- Oversampling del training set?
+    - Real data
+    - But more
+
+- Apply discretization to test set
+
+- LIME and ANCHOR do an internal discretization: quartile/decile based
+- Aggiungere post processing delle regole
+    -- If lower remove
+
+
+- Test Artificial
+-- Associative classifier do not capture the interaction...
+
+
+
+Code
+- Rule as a set? Frozen set? So that it can be a key?
+
+----------------------------------IMPORTANT -------------------------------
+- Riscalare rispetto alla classe a priori? V3_COMPAS example 4
+
+
+
+- Plot User Rule
+- Global explanation: as average of J(=100?) explanations of the explain set
+-- For each class
+-- Local rules: top K of local rules???
+-- Differenciate among local rules, union rules?
+- Notebook: 
+    -- Tweek one value and observe how the prediction changes
+    -- Comparison for target classes
+    -- Comparison for classifiers
+
+
+
+Plot:
+- Verbose version with id (Rule_1 (1,2) )  V
+
+Explanation w.r.t the predicted class 
+-- in the Notebook  V
+-- As a default
+
+- Salvare le regole come frozen set? (Anche V) 
+
+
+- Union rule:
+print Union Rule  
+print a flag it is a union rule in the Plot
+
+
+- Approximation error
+Fix function for the computation error
+Output error in the pandas dataframe rules
+
+- Run experiments with monks  V
+- Run experiments with artificial dataset extended V
+- Create continuous dataset
+- Run experiments with artificial dataset continuous
+
+#TODO Problem with int a string
+
+# Distanza nello spazio discreto o continuo???
+
+
+# Dare un delta maggiore se cambia la classe?
+
+# Tracciare i cambiamenti che fanno cambiare la classe?
+
+Note from monks_extended
+- Non riesce a capire contributo negativo di e!=1 se ci sono altri con contributo positivo, viene perso, simile ad altri. (RF)
+- Succede con tutti i classificatori? Testare con MLP 
+E' ancora peggio: la probabilita' rimane sempre 1!!! Quindi rimane il resto a 0 (a==b, class 1, se cambio e la probabilita' rimane sempre 1 quindi non osservo un cambiamento!)
+
+- Sistemare SHAP not Tree explainer
+
+- NON TROVA CONTRIBUTI NEGATIVI!!!! Especially if there is a or of conditions, if one mostly drive the prediciton.
+It finds the terms that drives the prediction
+
+
+- Global Shapley value V
+-- Input: random sample of the explain dataset
+    -- Attribute
+    -- Attribute values
+    -- Local rule
+
+
+- Store which attribute change changes the prediction
+-- One attribute value at the time  --> dict to which class (sort of, only single class) V
+
+
+-- Print predicted class  V
+
+-- Refactor PlotExplanation --> call plot mlp V
+
+-- Inject bias
+
+-- Redundancy threshold
+
+
+-- Discretized dataset: only train or both?? # TODO: only train or both??????
+
+# TODO IMPORTANT CHANGE MADE!!!!!!!!!!!!!!!! 18/03 Removed reset index
+-- discretize of import dataset. Why reset index??????
+#TODO why reset index??    
+return X_discretized.loc[indexes_validation]#.reset_index(drop=True)
+
+
+- TODO
+Use "real" indexes also on dataset.py!
+
+
+Injected bias
+- Count the hits and partial hits V
+- Plot the hits   V
+- Run SHAP --> how to capture this???
+
+
+- Validation
+-- Artificial datasets
+-- Injected bias
+-- Comparison with trasparent classifier
+
+
+LIME
+- Impact: with greater samples, better
+
+
+TODO:
+- Neighborhood in X'

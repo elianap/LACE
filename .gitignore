@@ -1,0 +1,8 @@
+out/
+results/
+core/
+core 
+results_output/
+__pycache__/
+.ipynb_checkpoints/
+src/__pycache__/

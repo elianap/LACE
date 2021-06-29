@@ -1,0 +1,9 @@
+flask
+numpy
+pandas
+scikit-learn
+matplotlib
+pandas
+liac-arff
+matplotlib
+l3wrapper
